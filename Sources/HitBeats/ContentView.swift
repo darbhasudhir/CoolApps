@@ -1,16 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var pads: [PadModel] = (0..<24).map { i in
-        // Distribute instrument types across the 24 pads
-        let types: [InstrumentType] = [.drums, .drums, .drums, .drums,
-                                       .bass, .bass, .bass, .bass,
-                                       .synth, .synth, .synth, .synth,
-                                       .vocal, .vocal, .vocal, .vocal,
-                                       .fx, .fx, .fx, .fx,
-                                       .drums, .bass, .synth, .vocal]
-        return PadModel(id: i, instrument: types[i])
-    }
+    @StateObject private var audioEngine = AudioEngine()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -41,7 +32,7 @@ struct ContentView: View {
             
             // Main Grid
             ScrollView {
-                GridView(pads: $pads)
+                GridView(audioEngine: audioEngine)
             }
             .background(Color.black)
             

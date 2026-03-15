@@ -22,6 +22,7 @@ struct PadModel: Identifiable {
     let id: Int
     let instrument: InstrumentType
     var isActive: Bool = false
+    var frequency: Double = 440.0
     
     var color: Color {
         instrument.color

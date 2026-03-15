@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct GridView: View {
-    @Binding var pads: [PadModel]
+    @ObservedObject var audioEngine: AudioEngine
     
     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
     
     var body: some View {
         LazyVGrid(columns: columns, spacing: 12) {
-            ForEach($pads) { $pad in
+            ForEach(audioEngine.pads) { pad in
                 PadView(pad: pad) {
-                    pad.isActive.toggle()
+                    audioEngine.togglePad(id: pad.id)
                 }
             }
         }
@@ -18,9 +18,6 @@ struct GridView: View {
 }
 
 #Preview {
-    @State var mockPads = (0..<24).map { i in
-        PadModel(id: i, instrument: InstrumentType.allCases[i % InstrumentType.allCases.count])
-    }
-    return GridView(pads: $mockPads)
+    GridView(audioEngine: AudioEngine())
         .background(Color.black)
 }
