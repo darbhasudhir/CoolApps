@@ -1,0 +1,5 @@
+.DS_Store
+HitBeats.xcodeproj
+DerivedData/
+Packages/
+.swiftpm/

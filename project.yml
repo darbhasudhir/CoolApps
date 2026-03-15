@@ -1,0 +1,14 @@
+name: HitBeats
+options:
+  bundleIdPrefix: com.darbhasudhir
+targets:
+  HitBeats:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: [Sources]
+    settings:
+      INFOPLIST_FILE: Resources/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.darbhasudhir.HitBeats
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      ENABLE_PREVIEWS: YES
