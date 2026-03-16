@@ -56,7 +56,14 @@ struct SoundPack: Identifiable, Equatable {
         description: "Heavy 808s and fast hi-hat rolls."
     )
     
-    static let allPacks = [edmAnthem, lofiChill, trapHouse]
+    static let popAnthem = SoundPack(
+        name: "Pop",
+        bpm: 115.0,
+        baseFrequencies: [.drums: 55.0, .bass: 65.0, .synth: 261.6, .vocal: 329.6, .fx: 523.2],
+        description: "Catchy melodies and upbeat rhythms."
+    )
+    
+    static let allPacks = [edmAnthem, lofiChill, trapHouse, popAnthem]
 }
 
 struct PadModel: Identifiable {
