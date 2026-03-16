@@ -38,9 +38,9 @@ struct ContentView: View {
             
             // Footer (FX Bar)
             HStack(spacing: 20) {
-                fxButton(title: "FILTER")
-                fxButton(title: "REVERB")
-                fxButton(title: "DELAY")
+                fxButton(title: "FILTER", isActive: audioEngine.isFilterActive) { audioEngine.toggleFilter() }
+                fxButton(title: "REVERB", isActive: audioEngine.isReverbActive) { audioEngine.toggleReverb() }
+                fxButton(title: "DELAY", isActive: audioEngine.isDelayActive) { audioEngine.toggleDelay() }
             }
             .padding()
             .background(Color(white: 0.1))
@@ -48,15 +48,13 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
     }
     
-    private func fxButton(title: String) -> some View {
-        Button(action: {
-            // Toggle effect
-        }) {
+    private func fxButton(title: String, isActive: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
             Text(title)
                 .font(.caption.bold())
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
-                .background(Color.gray.opacity(0.3))
+                .background(isActive ? Color.blue : Color.gray.opacity(0.3))
                 .foregroundColor(.white)
                 .cornerRadius(8)
         }
