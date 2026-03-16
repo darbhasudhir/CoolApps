@@ -28,6 +28,11 @@ enum InstrumentType: String, CaseIterable {
     }
 }
 
+enum PadSide: String {
+    case A
+    case B
+}
+
 struct SoundPack: Identifiable, Equatable {
     let id = UUID()
     let name: String
@@ -69,8 +74,10 @@ struct SoundPack: Identifiable, Equatable {
 struct PadModel: Identifiable {
     let id: Int
     let instrument: InstrumentType
+    let side: PadSide
     var isActive: Bool = false
     var frequency: Double = 440.0
+    var loopDuration: Double = 2.0 // Seconds
     
     var color: Color {
         instrument.color
