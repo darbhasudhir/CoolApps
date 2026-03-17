@@ -7,12 +7,13 @@ struct ContentView: View {
         ZStack {
             // Club Background
             RadialGradient(
-                gradient: Gradient(colors: [Color(white: 0.15), Color.black]),
+                gradient: Gradient(colors: audioEngine.currentPack.themeColors),
                 center: .center,
                 startRadius: 50,
                 endRadius: 500
             )
             .ignoresSafeArea()
+            .animation(.easeInOut(duration: 1.0), value: audioEngine.currentPack)
             
             VStack(spacing: 0) {
                 // Digital Header & Pack Selector
